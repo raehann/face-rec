@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+    <title>FaceRec</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<style>
+    .footer {
+        margin-top: 150px;
+    }
+</style>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="{{ url_for('index') }}">
+            <img class="navbar-logo" alt="Logo" src="{{ url_for('static', filename='img/logo-facerec.png') }}">
+        </a>
+        <a href="{{ url_for('masuk') }}" class="navbar-button">Masuk</a>
+    </div>
+
+    <!-- Content -->
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-6">
+                <h4>Pindai Wajah</h4>
+                <div class="camera-container">
+                    <img src="{{ url_for('video_feed') }}" id="videoFeed" class="img-thumbnail">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h4>Biodata Pengguna</h4>
+                <div id="userInfo">
+                    {% if current_user_info %}
+                        <p><strong>NIM:</strong> {{ current_user_info["nim"] }}</p>
+                        <p><strong>Nama:</strong> {{ current_user_info["name"] }}</p>
+                        <p><strong>Alamat:</strong> {{ current_user_info["address"] }}</p>
+                        <p><strong>No. Telepon:</strong> {{ current_user_info["phone_number"] }}</p>
+                        <p><strong>Email:</strong> {{ current_user_info["email"] }}</p>
+                    {% else %}
+                        <p>Belum ada data pengguna yang terdeteksi hari ini.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        &copy; 2024 FaceRec
+    </div>
+<script>
+    function updateUserData() {
+        fetch('/get_last_user_data')  // Endpoint baru untuk mengambil data pengguna terakhir
+            .then(response => response.json())
+            .then(data => {
+                if (data.success && data.user) {
+                    const user = data.user;
+                    document.getElementById('userInfo').innerHTML = `
+                        <p><strong>NIM:</strong> ${user.nim}</p>
+                        <p><strong>Nama:</strong> ${user.name}</p>
+                        <p><strong>Alamat:</strong> ${user.address}</p>
+                        <p><strong>No. Telepon:</strong> ${user.phone_number}</p>
+                        <p><strong>Email:</strong> ${user.email}</p>
+                    `;
+                } else {
+                    document.getElementById('userInfo').innerHTML = '<p>Belum ada data pengguna yang terdeteksi hari ini.</p>';
+                }
+            });
+    }
+
+    // Perbarui setiap 5 detik
+    setInterval(updateUserData, 5000);
+</script>
+</body>
+</html>

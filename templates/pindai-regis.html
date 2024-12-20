@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+    <title>FaceRec - Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<style>
+    .btn-training {
+        background-color: #FFD700; /* Gold color */
+        border: 2px solid #000000; /* Black border */
+        padding: 10px 20px;
+        text-align: center; /* Align text horizontally */
+        font-size: 16px;
+        font-weight: 600;
+        color: #000000;
+        border-radius: 5px;
+        text-decoration: none; /* Remove underline for links */
+        transition: all 0.3s ease;
+        display: flex; /* Use flexbox for alignment */
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
+        cursor: pointer;
+        height: 40px; /* Fixed height for consistent alignment */
+        width: 150px; /* Set width to a smaller value */
+        max-width: 100%; /* Ensure it doesn't exceed the container */
+    }
+
+    .btn-training:hover {
+        background-color: #FFC107; /* Slightly darker gold on hover */
+        color: #ffffff; /* White text on hover */
+        border-color: #FFC107;
+        transform: translateY(-2px); /* Slight lift effect */
+        box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover */
+    }
+
+    .btn-training:active {
+        transform: translateY(0); /* Press down effect */
+        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2); /* Reduce shadow */
+    }
+
+    .camera-container {
+        position: relative;
+        width: 300px; /* Set width to 300px */
+        height: 300px; /* Set height to 300px */
+        overflow: hidden; /* Hide overflow */
+        display: flex; /* Use flexbox for centering */
+        align-items: center; /* Center vertically */
+        justify-content: center; /* Center horizontally */
+        margin: 0 auto; /* Center the container */
+    }
+
+    .btn-container {
+        display: flex; /* Use flexbox */
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+        margin-top: 20px; /* Optional: Add margin for spacing */
+    }
+
+    #videoFeed {
+        width: 100%; /* Set width to 100% */
+        height: 100%; /* Set height to 100% */
+        object-fit: cover; /* This will ensure the image covers the container without distortion */
+        border: 2px dashed #ddd; /* Optional: Add a border for visual clarity */
+    }
+
+    .footer {
+        margin-top: 78px;
+    }
+
+</style>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="{{ url_for('admin') }}">
+            <img class="navbar-logo" alt="Logo" src="{{ url_for('static', filename='img/logo-facerec.png') }}">
+        </a>
+        <a href="{{ url_for('keluar') }}" class="navbar-button">Keluar</a>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <div class="container mt-4">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <h4 class="mb-4">Pindai Wajah</h4>
+                    <div class="camera-container">
+                        <img src="{{ url_for('vidfeed_dataset', nbr=user_profile_id) }}" width="300" height="300" class="img-thumbnail" id="videoFeed">
+                    </div>
+                    <div class="btn-container">
+                        <a class="btn-training" href="{{ url_for('train_classifier', nbr=user_profile_id) }}">Training</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        &copy; 2024 FaceRec
+    </div>
+
+</body>
+</html>

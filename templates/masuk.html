@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+    <title>FaceRec</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="{{ url_for('index') }}">
+            <img class="navbar-logo" alt="Logo" src="{{ url_for('static', filename='img/logo-facerec.png') }}">
+        </a>
+    </div>
+
+    <!-- Content -->
+<div class="login-container">
+    <img class="login-icon" src="{{ url_for('static', filename='img/login.png') }}" alt="Login Icon">
+    <form class="login-form" action="{{ url_for('masuk') }}" method="post">
+        <div class="form-group">
+            <label for="username">Nama pengguna</label>
+            <input type="text" id="username" name="username" placeholder="Masukkan nama pengguna" autocomplete="off" required>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Kata sandi</label>
+            <input type="password" id="password" name="password" placeholder="Masukkan kata sandi " autocomplete="off" required>
+        </div>
+
+        <button type="submit" class="login-button">Masuk</button>
+    </form>
+</div>
+
+    <!-- Footer -->
+    <div class="footer">
+        &copy; 2024 FaceRec
+    </div>
+
+</body>
+</html>

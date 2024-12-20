@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+    <title>FaceRec</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="{{ url_for('index') }}">
+            <img class="navbar-logo" alt="Logo" src="{{ url_for('static', filename='img/logo-facerec.png') }}">
+        </a>
+        <a href="{{ url_for('masuk') }}" class="navbar-button">Masuk</a>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <div class="content-left">
+            <div class="logo-large"></div>
+            <p class="tagline">"Wajah Anda, Identitas Anda."</p>
+            <a href="{{ url_for('pindai') }}" class="cta-button">Pindai wajah sekarang!</a>
+        </div>
+        <div class="content-right"></div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        &copy; 2024 FaceRec
+    </div>
+
+</body>
+</html>

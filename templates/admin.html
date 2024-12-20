@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+    <title>FaceRec - Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<style>
+    .content {
+        margin-top: 30px;
+        margin-bottom: 300px;
+    }
+
+    .icon {
+        width: 32px; /* Ukuran lebar ikon */
+        height: 32px; /* Ukuran tinggi ikon */
+    }
+
+    thead.thead-custom {
+        background-color: #40FE7C; /* Warna background header tabel */
+        color: #034C34; /* Warna teks header tabel */
+        text-align: center;
+    }
+
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: #f9f9f9; /* Warna baris ganjil */
+    }
+
+    .table-striped tbody tr:nth-of-type(even) {
+        background-color: #ffffff; /* Warna baris genap */
+    }
+
+    .table-bordered {
+        border: 2px solid #ddd; /* Border tabel */
+    }
+
+    .table-bordered th,
+    .table-bordered td {
+        border: 2px solid #034C34; /* Border untuk header dan sel */
+    }
+
+    td {
+        text-align: center;
+    }
+</style>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="{{ url_for('admin') }}">
+            <img class="navbar-logo" alt="Logo" src="{{ url_for('static', filename='img/logo-facerec.png') }}">
+        </a>
+        <a href="{{ url_for('keluar') }}" class="navbar-button">Keluar</a>
+    </div>
+
+    <!-- Content -->
+<div class="content">
+    <div class="container mt-4">
+        <!-- Header Section -->
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="d-flex align-items-center">
+                <img src="{{ url_for('static', filename='img/history.png') }}" alt="Riwayat Ikon" class="icon me-2">
+                <h4 class="mb-0"> Riwayat Pindai Pengguna</h4>
+            </div>
+            <a href="{{ url_for('registrasi') }}" class="cta-button">Tambah Pengguna</a>
+        </div>
+
+        <!-- Table Section -->
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead class="thead-custom">
+                    <tr>
+                        <th scope="col">Tanggal</th>
+                        <th scope="col">Jam</th>
+                        <th scope="col">NIM</th>
+                        <th scope="col">Nama</th>
+                        <th scope="col">Alamat</th>
+                        <th scope="col">No HP</th>
+                        <th scope="col">Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if scan_history %}
+                        {% for record in scan_history %}
+                        <tr>
+                            <td>{{ record['Tanggal'] }}</td>
+                            <td>{{ record['Jam'] }}</td>
+                            <td>{{ record['NIM'] }}</td>
+                            <td>{{ record['Nama'] }}</td>
+                            <td>{{ record['Alamat'] }}</td>
+                            <td>{{ record['No HP'] }}</td>
+                            <td>{{ record['Email'] }}</td>
+                        </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan="7" class="text-center">Tidak ada data riwayat pengguna</td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+    <!-- Footer -->
+    <div class="footer">
+        &copy; 2024 FaceRec
+    </div>
+
+</body>
+</html>

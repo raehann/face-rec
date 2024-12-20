@@ -1,0 +1,97 @@
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .navbar {
+            width: 1266px;
+            height: 137px;
+            background-color: #40FE7C;
+            border: 1px solid black;
+            border-radius: 25%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        .navbar-logo {
+            width: 284px;
+            height: 82px;
+            background-color: #034C34; /* Placeholder for the logo */
+            border-radius: 10%;
+        }
+
+        .navbar-button {
+            width: 154px;
+            height: 71px;
+            background-color: #034C34;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 1266px;
+            margin: 50px 0;
+        }
+
+        .content-left {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .logo-large {
+            width: 493px;
+            height: 163px;
+            background-color: #034C34; /* Placeholder for the logo */
+            border-radius: 10%;
+        }
+
+        .tagline {
+            font-size: 24px;
+            font-weight: 500;
+            margin: 20px 0;
+        }
+
+        .cta-button {
+            width: 253px;
+            height: 53px;
+            background-color: #034C34;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .content-right {
+            width: 748px;
+            height: 809px;
+            background-color: #40FE7C; /* Placeholder for the hero image */
+            border-radius: 10px;
+        }
+
+        .footer {
+            width: 1266px;
+            height: 60px;
+            background-color: #40FE7C;
+            border: 1px solid black;
+            border-radius: 25%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 500;
+        }
